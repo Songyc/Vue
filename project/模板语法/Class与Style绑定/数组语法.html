@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div class="div1" v-bind:class="[activeClass, errorClass]"></div>
+	<div class="div2" v-bind:class="[isActive ? activeClass : '', errorClass]"></div>
+	<div class="div3" v-bind:class="{ active: active, errorClass: errorClass }"></div>
+
+	<script src="../../js/vue.js"></script>	
+	<script>
+	var vm = new Vue({
+		el: '.div1',
+		data: {
+			activeClass: 'active',
+			errorClass: 'text-danger'
+		}
+	});
+
+	var vm2 = new Vue({
+		el: '.div2',
+		data: {
+			isActive: false,
+			activeClass: 'active',
+			errorClass: 'text-danger'
+		}
+	});
+
+	var vm3 = new Vue({
+		el: '.div3',
+		data: {
+			active: true,
+			errorClass: true
+		}
+	});
+	</script>
+</body>
+</html>

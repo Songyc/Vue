@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div class="div1">{{ number + 1 }}</div>
+	<div class="div2">{{ ok ? 'YES' : 'NO' }}</div>
+	<div class="div3">{{  message }}</div>
+	<div class="div4" v-bind:id="'list-' + id"></div>
+	<script src="../../js/vue.js"></script>
+	<script>
+	new Vue({
+		el: '.div1',
+		data: {
+			number: 2
+		}
+	});
+
+	new Vue({
+		el: '.div2', 
+		data: {
+			ok: true
+		}
+	});
+
+	new Vue({
+		el: '.div3',
+		data: {
+			message: [0, 1, 2],
+			computed: function () {
+				this.message = message.split('').reverse().join('');
+			}
+		}
+	});
+
+	new Vue({
+		el: '.div4',
+		data: {
+			id: '123'
+		}
+	});
+	</script>
+</body>
+</html>

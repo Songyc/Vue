@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div class="div1" v-bind:class="{ active: isActive }"></div>
+	
+	<div class="static" v-bind:class="{ active: isActive, 'text-danger': hasError }"></div>
+	
+	<div class="classObject" v-bind:class="classObject"></div>
+	
+	<div class="classObject2" v-bind:class="classObject"></div>
+
+	<script src="../../js/vue.js"></script>	
+	<script>
+	var vm = new Vue({
+		el: '.div1',
+		data: {
+			isActive: true,
+			hasError: false
+		},
+		computed: {
+			reversedMessage: function() {
+				return this.message.split('').reverse().join('')
+			}
+		}
+	});
+
+	var vm2 = new Vue({
+		el: '.static',
+		data: {
+			isActive: true,
+			hasError: true
+		}
+	});
+
+	var vm3 = new Vue({
+		el: '.classObject',
+		data: {
+			classObject: {
+				active: true,
+				'text-danger': false
+			}
+		}
+	});
+
+	var vm4 = new Vue({
+		el: '.classObject2',
+		data: {
+
+		},
+		computed: {
+			classObject: function() {
+				return {
+					'active': true,
+					'text-danger': false
+				}
+			}
+		}
+	});
+
+	</script>
+</body>
+</html>

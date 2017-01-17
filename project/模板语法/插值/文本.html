@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<span v-once>This will never change: {{ msg }}</span>
+	<script src="../../js/vue.js"></script>
+	<script>
+	var vm = new Vue({
+		el: 'span',
+		data: {
+			msg: 'msg'
+		}
+	})
+	</script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<p v-if="seen">Now you see me</p>
+	<a v-on:click="doSomething"> 123 </a>
+
+	<script src="../../js/vue.js"></script>
+	<script>
+	new Vue({
+		el: 'p',
+		data: {
+			seen: true
+		}
+	})
+
+	new Vue({
+		el: 'a',
+		data: {
+			doSomething: function () {
+				alert('a');
+			}
+		}
+	});
+	
+	</script>
+</body>
+</html>
