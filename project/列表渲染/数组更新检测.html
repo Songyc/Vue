@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script src="../../js/vue.js"></script>
+	<ul id="example-1">
+  		<li v-for="item in items">
+    		{{ item.message }}
+  		</li>
+	</ul>
+	<ul id="example-2">
+		<li v-for="n in evenNumbers">{{ n }}</li>
+	</ul>
+
+	<ul id="example-3">
+		<li v-for="n in even(numbers)">{{ n }}</li>
+	</ul>
+	<script>
+	var example1 = new Vue({
+		el: '#example-1',
+		data: {
+			items: [{
+				message: 'Foo'
+			}, {
+				message: 'Bar'
+			}, {
+				message: 'Bas'
+			}]
+		}
+	});
+
+	// example1.items.push({message: 'Bas'});
+	// example1.items = example1.items.filter(function (item) {
+	// 	return item.message.match(/Foo/)
+	// })
+
+	Vue.set(example1.items, 0, {message: 'Foo2'});
+
+	example1.items.splice(0, 2, {message: 'Foo3'});
+
+	var example2 = new Vue({
+		el: '#example-2',
+		data: {
+			numbers: [1, 2, 3, 4, 5]
+		},
+		computed: {
+			evenNumbers: function() {
+				return this.numbers.filter(function(number) {
+					return number % 2 === 0
+				})
+			}
+		}
+	});
+
+	var example3 = new Vue({
+		el: '#example-3',
+		data: {
+			numbers: [1, 2, 3, 4, 5]
+		},
+		methods: {
+			even: function(numbers) {
+				return numbers.filter(function(number) {
+					return number % 2 === 0
+				})
+			}
+		}
+	});
+	</script>
+</body>
+</html>

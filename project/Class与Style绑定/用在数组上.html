@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<my-component class="baz boo"></my-component>
+	
+	<my-component2 class="baz2" v-bind:class="{ active: isActive }"></my-component2>
+
+	<script src="../../js/vue.js"></script>	
+	<script>
+	Vue.component('my-component', {
+		template: '<p class="foo bar">Hi</p>'
+	});
+
+	new Vue({
+		el: '.baz'
+	});
+
+	Vue.component('my-component2', {
+		template: '<p class="foo bar">Hi</p>'
+	});
+
+	new Vue({
+		el: '.baz2',
+		data: {
+			isActive: true
+		}
+	})
+	</script>
+</body>
+</html>
