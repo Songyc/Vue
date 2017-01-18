@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script src="../js/vue.js"></script>
+	<!-- 阻止单击事件冒泡 -->
+	<a class="a1" v-on:click.stop="doThis">12313</a>
+	
+	<!-- 提交事件不再重载页面 -->
+	<form class="f1" v-on:submit.prevent="onSubmit">
+	
+	<!-- the click event will be triggered at most once -->
+	<a class="a2" v-on:click.once="doThis">12313</a>
+
+	</form>
+	
+	<script>
+	var example1 = new Vue({
+		el: '.a1',
+		data: {
+			doThis: function (e) {
+				console.log(e);
+			}
+		}
+	});
+
+	var example2 = new Vue({
+		el: '.f1',
+		data: {
+			onSubmit: function (e) {
+				console.log(e);
+			}
+		}
+	});
+
+	var example3 = new Vue({
+		el: '.a2',
+		data: {
+			doThis: function () {
+				console.log('e')
+			}
+		}
+	});
+	
+	</script>
+</body>
+</html>

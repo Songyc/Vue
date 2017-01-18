@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div class="a1">
+		<child message="hello!"></child>
+	</div>
+		
+	<div class="a2">
+		<child2 my-message="hello!"></child2>
+	</div>
+	
+	<div class="a3"> 
+	  	<input v-model="parentMsg">
+	  	<!-- <br> -->
+	  	<child3 :my-message="parentMsg"></child3>
+	</div>
+
+	<script src="../js/vue.js"></script>
+	<script>
+	Vue.component('child', {
+		// 声明 props
+		props: ['message'],
+		// 就像 data 一样，prop 可以用在模板内
+		// 同样也可以在 vm 实例中像 “this.message” 这样使用
+		template: '<span>{{ message }}</span>'
+	});
+
+	new Vue({
+		el: '.a1'
+	})
+
+	Vue.component('child2', {
+		// camelCase in JavaScript
+		props: ['myMessage'],
+		template: '<span>{{ myMessage }}</span>'
+	})
+
+	new Vue({
+		el: '.a2'
+	})
+
+	Vue.component('child3', {
+		// camelCase in JavaScript
+		props: ['myMessage'],
+		template: '<span>{{ myMessage }}</span>'
+	});
+
+	new Vue({
+		el: '.a3'
+	})
+
+	</script>
+</body>
+</html>

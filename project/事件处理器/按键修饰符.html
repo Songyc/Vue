@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script src="../js/vue.js"></script>
+
+	<!-- 只有在 keyCode 是 13 时调用 vm.submit() -->
+	<input class="i1" v-on:keyup.13="submit">
+	
+	<!-- 同上 -->
+	<input class="i2" v-on:keyup.enter="submit">
+	
+	<!-- 缩写语法 -->
+	<input class="i3" @keyup.enter="submit">
+	
+	<!-- Alt + C -->
+	<input class="i4" @keyup.alt.67="clear">
+	
+	<!-- Ctrl + Click -->
+	<div class="i5" @click.ctrl="doSomething">Do something</div>
+
+	<script>
+	var example1 = new Vue({
+		el: '.i1',
+		data: {
+			submit: function (e) {
+				console.log(e);
+			}
+		}
+	});  
+	console.log(Vue.config.keyCodes);
+
+	var example1 = new Vue({
+		el: '.i4',
+		data: {
+			submit: function(e) {
+				console.log(e);
+			}
+		}
+	});
+	</script>
+</body>
+</html>

@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script src="../../js/vue.js"></script>
+	<div class="i1">
+		<input v-model="message" placeholder="edit me">
+		<p>Message is: {{ message }}</p>
+	</div>
+
+	<div class="i2">
+		<span>Multiline message is:</span>
+		<p style="white-space: pre">{{ message }}</p>
+		<br>
+		<textarea v-model="message" placeholder="add multiple lines"></textarea>
+	</div>
+	
+	<div class="i3">
+		<input type="checkbox" id="checkbox" v-model="checked">
+		<label for="checkbox">{{ checked }}</label>
+	</div>
+		
+	<div class="i4">
+		<input type="checkbox" id="jack" value="Jack" v-model="checkedNames">
+		<label for="jack">Jack</label>
+		<input type="checkbox" id="john" value="John" v-model="checkedNames">
+		<label for="john">John</label>
+		<input type="checkbox" id="mike" value="Mike" v-model="checkedNames">
+		<label for="mike">Mike</label>
+		<br>
+		<span>Checked names: {{ checkedNames }}</span>
+	</div>
+	
+	<div class="i5">
+		<input type="radio" id="one" value="One" v-model="picked">
+		<label for="one">One</label>
+		<br>
+		<input type="radio" id="two" value="Two" v-model="picked">
+		<label for="two">Two</label>
+		<br>
+		<span>Picked: {{ picked }}</span>
+	</div>
+	
+	<div class="i6">
+		<select v-model="selected">
+		  	<option>A</option>
+		  	<option>B</option>
+		  	<option>C</option>
+		</select>
+		<span>Selected: {{ selected }}</span>
+	</div>
+		
+	<div class="i7">
+		<select v-model="selected" multiple>
+		  	<option>A</option>
+		  	<option>B</option>
+		  	<option>C</option>
+		</select>
+		<br>
+		<span>Selected: {{ selected }}</span>
+	</div>
+	
+	<div class="i8">
+		<select v-model="selected">
+		  	<option v-for="option in options" v-bind:value="option.value">
+		    	{{ option.text }}
+		  	</option>
+		</select>
+		<span>Selected: {{ selected }}</span>
+	</div>
+	
+	<!-- 当选中时，`picked` 为字符串 "a" -->
+	<div class="i9">
+		<input type="radio" v-model="picked" value="a">
+		<input type="radio" value="a">
+		<input type="radio" value="a">
+	</div>
+
+	<!-- `toggle` 为 true 或 false -->
+	<input class="i10" type="checkbox" v-model="toggle">
+
+	<!-- 当选中时，`selected` 为字符串 "abc" -->
+	<div class="i11">
+		<select v-model="selected">
+  			<option value="abc">ABC</option>
+		</select>
+	</div>
+
+	<div class="i12">
+		<input type="checkbox" v-model="toggle" v-bind:true-value="a" v-bind:false-value="b" />
+	</div>
+	
+	<div class="i13">
+		<input type="radio" v-model="pick" v-bind:value="a">
+	</div>
+	
+	<select class="i14" v-model="selected">
+	  	<option v-bind:value="{ number: 123 }">123</option>
+	</select>
+	
+	<!-- 在 "change" 而不是 "input" 事件中更新 -->
+	<input class="i15" v-model.lazy="msg" >
+
+	<script>
+	new Vue({
+		el: '.i1',
+		data: {
+			message: 'asd'
+		}
+	});
+
+	new Vue({
+		el: '.i2',
+		data: {
+			message: 'asd'
+		}
+	});
+
+	new Vue({
+		el: '.i3',
+		data: {
+			checked: undefined
+		}
+	});
+
+	new Vue({
+		el: '.i4',
+		data: {
+			checkedNames: []
+		}
+	});
+
+	new Vue({
+		el: '.i5',
+		data: {
+			picked: []
+		}
+	});
+
+	new Vue({
+		el: '.i6',
+		data: {
+			selected: 'selected'
+		}
+	});
+
+	new Vue({
+		el: '.i7',
+		data: {
+			selected: []
+		}
+	});
+
+	new Vue({
+		el: '.i8',
+		data: {
+			selected: 'A',
+			options: [{
+				text: 'One',
+				value: 'A'
+			}, {
+				text: 'Two',
+				value: 'B'
+			}, {
+				text: 'Three',
+				value: 'C'
+			}]
+		}
+	});
+
+	new Vue({
+		el: '.i9',
+		data: {
+			picked: true
+		}
+	});
+
+	new Vue({
+		el: '.i10',
+		data: {
+			toggle: true
+		}
+	});
+
+	new Vue({
+		el: '.i11',
+		data: {
+			selected: true
+		}
+	});
+
+	var vm = new Vue({
+		el: '.i12',
+		data: {
+			toggle: true,
+			a: true,
+			b: false
+		}
+	});
+
+	new Vue({
+		el: '.i13',
+		data: {
+			pick: true,
+			a: true
+		}
+	});
+
+	var vm2 = new Vue({
+		el: '.i14',
+		data: {
+			selected: 'selected',
+			number: 'number'
+		}
+	});
+
+	new Vue({
+		el: '.i15',
+		data: {
+			pick: true
+		}
+	});
+	</script>
+</body>
+</html>
